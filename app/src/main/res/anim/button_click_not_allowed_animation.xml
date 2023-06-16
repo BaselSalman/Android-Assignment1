@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:fromXDelta="0%"
+        android:toXDelta="20%"
+        android:duration="50"/>
+
+    <!--  android:startOffset to wait for the previous animation to finish  -->
+    <translate
+        android:startOffset="50"
+        android:fromXDelta="20%"
+        android:toXDelta="0%"
+        android:duration="50"/>
+
+    <translate
+        android:startOffset="100"
+        android:fromXDelta="0%"
+        android:toXDelta="-20%"
+        android:duration="50"/>
+
+    <translate
+        android:startOffset="150"
+        android:fromXDelta="-20%"
+        android:toXDelta="0%"
+        android:duration="50"/>
+
+    <alpha
+        android:fromAlpha="0.2"
+        android:toAlpha="1.0"
+        android:duration="150"/>
+</set>

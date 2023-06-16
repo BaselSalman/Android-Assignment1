@@ -1,25 +1,37 @@
 package com.example.math_for_elementary_school_students.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.example.math_for_elementary_school_students.R;
-
+import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuestionDao {
 
     private List<Question> questions;
-    private AnswersDao answersDao;
-    private int numOfQuestions;
+    private final AnswersDao answersDao;
+    private final SharedPreferences preferences;
+    private final SharedPreferences.Editor editor;
 
-    public QuestionDao() {
+    public QuestionDao(Context context) {
         answersDao = new AnswersDao();
         questions = new ArrayList<>();
-        numOfQuestions = 0;
-        setQuestions();
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = preferences.edit();
+        if(!preferences.getBoolean("areQuestionsSaved", false)) {
+            setQuestions();
+            saveOnSharedPreferences(questions);
+        } else {
+            questions = getFromSharedPreferences();
+        }
     }
 
-    public Question getQuestion(int id) {
-        return questions.get(id);
+
+    public List<Question> getAllQuestions() {
+        return questions;
     }
 
     private void setQuestions() {
@@ -93,10 +105,25 @@ public class QuestionDao {
 
     private void addQuestion(Question question) {
         questions.add(question);
-        numOfQuestions++;
+    }
+
+    private void saveOnSharedPreferences(List<Question> questions) {
+        Gson gson = new Gson();
+        String questionsJson = gson.toJson(questions);
+        editor.putBoolean("areQuestionsSaved", true);
+        editor.putString("questions", questionsJson);
+        editor.commit();
+    }
+
+    private List<Question> getFromSharedPreferences() {
+        Gson gson = new Gson();
+        String questionsJson = preferences.getString("questions", null);
+        Question[] questionsArray = gson.fromJson(questionsJson, Question[].class);
+        return Arrays.asList(questionsArray);
     }
 
     public int getNumOfQuestions() {
-        return numOfQuestions;
+        return questions.size();
     }
+
 }

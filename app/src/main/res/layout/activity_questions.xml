@@ -1,109 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:id="@+id/rootLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/question_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="@color/questionsBackground"
-        android:gravity="center"
-        android:layoutDirection="ltr"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:scrollbars="vertical"/>
 
-        <TextView
-            android:id="@+id/txtQestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="Select the correct answer"
-            android:textColor="@color/text_color"
-            android:textSize="14pt" />
-
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="50dp"
-            android:scrollbars="horizontal">
-
-            <ImageView
-                android:id="@+id/questionImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#00000000"
-                tools:srcCompat="@drawable/q2" />
-
-        </HorizontalScrollView>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="Select the correct answer"
-            android:textColor="@color/text_color"
-            android:textSize="25sp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/rb1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14pt" />
-
-            <RadioButton
-                android:id="@+id/rb2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14pt" />
-
-            <RadioButton
-                android:id="@+id/rb3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14pt" />
-
-            <RadioButton
-                android:id="@+id/rb4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14pt" />
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btnEnd"
-            android:layout_width="166dp"
-            android:layout_height="65dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/baby_blue"
-            android:gravity="center"
-            android:text="Submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12pt" />
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

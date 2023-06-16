@@ -1,11 +1,7 @@
 package com.example.math_for_elementary_school_students.model;
 
-import com.example.math_for_elementary_school_students.R;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AnswersDao {
     private List<QuestionAnswers> answersList;
